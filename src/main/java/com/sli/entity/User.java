@@ -5,6 +5,7 @@ public class User {
     private String name;
     private Integer age;
     private String email;
+    private Dept dept;
 
     public User() {
     }
@@ -14,6 +15,14 @@ public class User {
         this.name = name;
         this.age = age;
         this.email = email;
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 
     public Integer getId() {

@@ -9,6 +9,7 @@ import java.util.Map;
 //注意这里导包是用java中的sql包的接口而不是mysql包的实现类
 
 import com.sli.entity.User;
+import com.sli.jdbc.SpringConfig;
 import com.sli.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -67,12 +68,20 @@ public class ConnectionTest {
         //创建SqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        Map<String,String> map = new HashMap<>();
-        map.put("username","张三");
-        map.put("address","郝汉山");
 //        User users =  sqlSession.selectOne("com.sli.mapper.UserMapper.selectUserById",3);//传入pojo包装类
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User users = mapper.selectUserById(2);
+//        User users = mapper.selectUserById(3);
+//        List<User> users1 = mapper.selectAllUser();
+//        User user = new User();
+//        user.setId(5);
+//        user.setName("may");
+//        user.setAge(11);
+//        user.setEmail("email@may");
+        List<User> users = mapper.selectAllUserAndDept();
+//        int i = mapper.addUser(user);
+//        int i = mapper.updateUser(user);
         System.out.println(users);
+        sqlSession.commit();
+        sqlSession.close();
     }
 }

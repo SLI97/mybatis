@@ -1,6 +1,7 @@
-package com.sli;
+package com.sli.jdbc;
 
 
+import com.sli.jdbc.JdbcConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

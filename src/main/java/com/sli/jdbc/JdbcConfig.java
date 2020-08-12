@@ -1,4 +1,4 @@
-package com.sli;
+package com.sli.jdbc;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;

@@ -5,22 +5,53 @@
 
 <mapper namespace="com.sli.mapper.UserMapper">
 
+    <resultMap id="UserAndDept" type="User">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="age" property="age"></result>
+        <result column="email" property="email"></result>
+        <association property="dept" column="dept_name" javaType="Dept"></association>
+    </resultMap>
+
     <!-- 根据uid查询一个用户信息 -->
     <select id="selectUserById" parameterType="Integer"
-            resultType="com.sli.entity.User">
+            resultType="User">
         select * from user where id = #{hahaid}
     </select>
+
+    <select id="selectUserList" parameterType="User" resultType="User" statementType="PREPARED">
+        select * from user u
+        <where>
+            <if test="name != null and name != ''">
+                AND u.name like concat('%', #{name}, '%')
+            </if>
+            <if test="age != null and age != ''">
+                AND u.age = #{age}
+            </if>
+            <if test="email != null and email != ''">
+                AND u.email = #{email}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectAllUserAndDept" resultMap="UserAndDept">
+        select u.id id ,u.name name,u.age age,u.email email ,
+        d.dept_name dept_name
+        from user u
+        left join dept d on u.dept_id = d.id
+    </select>
+
     <!-- 查询所有用户信息 -->
-    <select id="selectAllUser" resultType="com.sli.entity.User">
+    <select id="selectAllUser" resultType="User">
         select * from user
     </select>
     <!-- 添加一个用户，#{uname}为 com.mybatis.po.MyUser 的属性值 -->
-    <insert id="addUser" parameterType="com.sli.entity.User">
+    <insert id="addUser" parameterType="User">
         insert into user (name,age,email)
-        values(#{param1},#{param2},#{param3})
+        values(#{name},#{age},#{email})
     </insert>
     <!--修改一个用户 -->
-    <update id="updateUser" parameterType="com.sli.entity.User">
+    <update id="updateUser" parameterType="User">
         update user set name =
         #{name},age = #{age},email = #{email} where id = #{id}
     </update>

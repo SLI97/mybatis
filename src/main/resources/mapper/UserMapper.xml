@@ -10,7 +10,14 @@
         <result column="name" property="name"></result>
         <result column="age" property="age"></result>
         <result column="email" property="email"></result>
-        <association property="dept" column="dept_name" javaType="Dept"></association>
+        <association property="dept" javaType="Dept" column="dept_id">
+            <id column="dept_id" property="id"></id>
+            <result column="dept_name" property="deptName"></result>
+        </association>
+        <collection property="roleList" javaType="List" ofType="Role">
+            <id column="role_id" property="id"></id>
+            <result column="role_name" property="roleName"></result>
+        </collection>
     </resultMap>
 
     <!-- 根据uid查询一个用户信息 -->
@@ -34,11 +41,14 @@
         </where>
     </select>
 
-    <select id="selectAllUserAndDept" resultMap="UserAndDept">
+    <select id="selectAllUserAndDeptAndRole" resultMap="UserAndDept">
         select u.id id ,u.name name,u.age age,u.email email ,
-        d.dept_name dept_name
+            d.id dept_id,d.dept_name dept_name,
+            r.id role_id,r.role_name role_name
         from user u
-        left join dept d on u.dept_id = d.id
+            left join dept d on u.dept_id = d.id
+            left join user_role ur on ur.user_id = u.id
+            left join role r on r.id = ur.role_id
     </select>
 
     <!-- 查询所有用户信息 -->

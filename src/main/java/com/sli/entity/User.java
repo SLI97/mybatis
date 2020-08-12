@@ -1,11 +1,15 @@
 package com.sli.entity;
 
+import java.util.List;
+
 public class User {
     private Integer id;
     private String name;
     private Integer age;
     private String email;
     private Dept dept;
+
+    private List<Role> roleList;
 
     public User() {
     }
@@ -64,6 +68,16 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
+                ", dept=" + dept +
+                ", roleList=" + roleList +
                 '}';
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 }

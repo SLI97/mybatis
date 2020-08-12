@@ -15,7 +15,7 @@ public interface UserMapper {
 //    @Select("SELECT * FROM user")
     public List<User> selectAllUser();
 
-    public List<User> selectAllUserAndDept();
+    public List<User> selectAllUserAndDeptAndRole();
 
     public int addUser(User user);
     public int updateUser(User user);

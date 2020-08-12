@@ -77,7 +77,7 @@ public class ConnectionTest {
 //        user.setName("may");
 //        user.setAge(11);
 //        user.setEmail("email@may");
-        List<User> users = mapper.selectAllUserAndDept();
+        List<User> users = mapper.selectAllUserAndDeptAndRole();
 //        int i = mapper.addUser(user);
 //        int i = mapper.updateUser(user);
         System.out.println(users);

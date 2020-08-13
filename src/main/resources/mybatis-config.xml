@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE configuration
+                PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<properties resource="./jdbc.properties">-->
+    <!--</properties>-->
+    <properties>
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&amp;useSSL=true"/>
+    </properties>
+    <!--<settings>-->
+        <!--&lt;!&ndash; 控制台打印sql语句 &ndash;&gt;-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    <!--</settings>-->
+    <settings>
+        <!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
+        <setting name="useGeneratedKeys" value="true" />
+
+        <!-- 使用列别名替换列名 -->
+        <!-- <setting name="useColumnLabel" value="true"/> -->
+
+        <!-- 开启驼峰命名转换(userId === user_id) -->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+    <!--<typeAliases>-->
+        <!--<package name="com.sli.entity"/>-->
+    <!--</typeAliases>-->
+    <!-- 和spring整合后 environments配置将废除 -->
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--&lt;!&ndash; 使用jdbc事务管理 &ndash;&gt;-->
+            <!--<transactionManager type="JDBC" />-->
+            <!--&lt;!&ndash; 数据库连接池 &ndash;&gt;-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="${driver}" />-->
+                <!--<property name="url" value="${url}" />-->
+                <!--<property name="username" value="${username}" />-->
+                <!--<property name="password" value="${password}" />-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+    <!--<mappers>-->
+        <!--<mapper resource="./mapper/UserMapper.xml"/>-->
+    <!--</mappers>-->
+</configuration>

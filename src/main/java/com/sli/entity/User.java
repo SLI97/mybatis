@@ -14,11 +14,13 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, Integer age, String email) {
+    public User(Integer id, String name, Integer age, String email, Dept dept, List<Role> roleList) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+        this.dept = dept;
+        this.roleList = roleList;
     }
 
     public Dept getDept() {

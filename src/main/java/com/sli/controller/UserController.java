@@ -15,8 +15,9 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-    @RequestMapping("get")
+    @RequestMapping("/get")
     public List<User> getUsers(){
+        System.out.println(userService.selectAllUserAndDeptAndRole());
         return userService.selectAllUserAndDeptAndRole();
     }
 }
